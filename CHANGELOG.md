@@ -1,5 +1,12 @@
 # Nhật ký thay đổi
 
+## [1.1.0] – 2026-10-27
+
+### Thêm mới
+- Hỗ trợ Codex của OpenAI: hướng dẫn cài trong README, script cài đặt chép skill vào cả `~/.claude/skills/` và `~/.agents/skills/`.
+- Skill nhận biết môi trường Codex ở câu hỏi 7 và tạo trợ lý riêng tại `.agents/skills/do-an-<tên-ngắn>/SKILL.md`.
+- `validate_skill.py` thêm lựa chọn `--env codex`.
+
 ## [1.0.0] – 2026-10-27
 
 ### Thêm mới

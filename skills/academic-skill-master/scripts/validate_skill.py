@@ -2,7 +2,7 @@
 """Kiểm tra một file SKILL_MASTER.md (hoặc SKILL.md / .mdc) được tạo bởi academic-skill-master.
 
 Cách dùng:
-    python validate_skill.py <file> [--env web|code|cursor]
+    python validate_skill.py <file> [--env web|code|codex|cursor]
 
 Thoát với mã 0 nếu không có LỖI (cảnh báo vẫn được in ra), mã 1 nếu có lỗi.
 """
@@ -18,7 +18,7 @@ SECTIONS = [
     "Section 5: NATURAL-LANGUAGE INTENT ROUTER",
 ]
 NOTICE = "LƯU Ý: Hãy kiểm tra quy định của trường/khoa về việc sử dụng AI trong đồ án và khai báo đúng yêu cầu."
-LENGTH = {"web": (500, 800), "code": (500, 800), "cursor": (300, 400)}
+LENGTH = {"web": (500, 800), "code": (500, 800), "codex": (500, 800), "cursor": (300, 400)}
 SOURCE_TAGS = ("từ template", "từ bạn khai", "giả định", "chưa có")
 
 

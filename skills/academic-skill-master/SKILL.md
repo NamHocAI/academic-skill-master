@@ -39,7 +39,7 @@ Không hứa chắc "điểm A+". Mục tiêu là bám sát tiêu chí chấm th
 
 1. Đọc `references/principles.md` và `references/interview.md`.
 2. Chào ngắn 1–2 câu, rồi gửi đủ 10 câu hỏi TRONG MỘT TIN NHẮN, chia nhóm A–D, mỗi câu có ví dụ mẫu. Nhấn mạnh câu 3, 4, 8.
-3. Câu 7 (môi trường): nếu nhận ra mình đang chạy trong Claude Code hoặc Cursor, nói luôn điều đó để người dùng chỉ cần xác nhận.
+3. Câu 7 (môi trường): nếu nhận ra mình đang chạy trong Claude Code, Codex hoặc Cursor, nói luôn điều đó để người dùng chỉ cần xác nhận.
 4. Hỏi lại đúng phần còn thiếu. Xử lý "chưa biết", file mẫu, rubric, đề tài mơ hồ theo `interview.md`.
 5. TUYỆT ĐỐI chưa tạo file ở giai đoạn này.
 
@@ -66,11 +66,11 @@ Dòng nào là "giả định – chưa xác minh" thì nhắc nên hỏi lại 
 
 1. Đọc `references/skill-master-spec.md` (bắt buộc), `references/intent-router.md`, và `references/default-rubric.md` nếu chưa có rubric thật.
 2. Viết LẦN LƯỢT từng section, không viết cả file trong một lượt. Sau mỗi section, kiểm tra nội dung không bị cắt cụt.
-3. Độ dài: 500–800 dòng cho Claude Web và Claude Code; 300–400 dòng cho Cursor.
+3. Độ dài: 500–800 dòng cho Claude Web, Claude Code và Codex; 300–400 dòng cho Cursor.
 4. Tạo file phụ từ `assets/` nếu môi trường cho ghi file: `REFERENCES.md`, `PROJECT_STATUS.md`, `FEEDBACK_LOG.md`. Không ghi được file thì đưa nội dung vào chat.
 5. Chạy kiểm tra tự động (nếu chạy được lệnh):
    ```
-   python "<skill>/scripts/validate_skill.py" "<đường dẫn tới file vừa tạo>" --env code|web|cursor
+   python "<skill>/scripts/validate_skill.py" "<đường dẫn tới file vừa tạo>" --env code|codex|web|cursor
    ```
    Sửa hết lỗi mà script báo. Không chạy được lệnh thì tự kiểm theo danh sách trong `skill-master-spec.md` mục "Kiểm tra cuối".
 6. Không tạo được file: đưa toàn bộ nội dung trong MỘT khối mã để người dùng sao chép, rồi hướng dẫn lưu thành `SKILL_MASTER.md`.
@@ -81,9 +81,10 @@ Dòng nào là "giả định – chưa xác minh" thì nhắc nên hỏi lại 
 |---|---|---|
 | Claude Web (Project) | `SKILL_MASTER.md`, tải vào mục kiến thức (Project knowledge) của Project | Mở Project, nhắn yêu cầu bình thường |
 | Claude Code | `.claude/skills/<ten-do-an>/SKILL.md` trong thư mục đồ án (đổi tên từ SKILL_MASTER.md) | Nhắn yêu cầu bình thường trong phiên |
+| Codex (CLI, app, IDE) | `.agents/skills/<ten-do-an>/SKILL.md` trong thư mục đồ án (đổi tên từ SKILL_MASTER.md) | Nhắn yêu cầu bình thường; hoặc gõ `$<ten-do-an>` hay `/skills` để gọi thẳng |
 | Cursor | `.cursor/rules/<ten-do-an>.mdc` | Nhắn yêu cầu bình thường trong chat |
 
-Trên Claude Code, tự tạo file đúng chỗ cho người dùng; file phụ đặt ở thư mục gốc của đồ án. Môi trường khác các dòng trên thì hỏi lại trước khi hướng dẫn.
+Trên Claude Code và Codex, tự tạo file đúng chỗ cho người dùng; file phụ đặt ở thư mục gốc của đồ án. Codex tự nhận skill mới; nếu chưa thấy thì nhắc người dùng mở lại Codex. Môi trường khác các dòng trên thì hỏi lại trước khi hướng dẫn.
 
 #### Bàn giao
 

@@ -2,7 +2,7 @@
 
 File chính duy nhất, có YAML frontmatter (`name`, `description`), gồm ĐÚNG 5 section. Dùng bảng và checklist, ưu tiên cô đọng.
 
-- Độ dài: 500–800 dòng cho Claude Web và Claude Code; 300–400 dòng cho Cursor.
+- Độ dài: 500–800 dòng cho Claude Web, Claude Code và Codex; 300–400 dòng cho Cursor.
 - File phụ (ngoại lệ được phép): `REFERENCES.md`, `PROJECT_STATUS.md`, `FEEDBACK_LOG.md`. Mẫu ở `assets/`. Chỉ tạo khi môi trường cho ghi file; nếu không, đưa nội dung vào chat.
 - Mọi lần tạo file đều theo khung dưới đây để kết quả nhất quán.
 
@@ -28,7 +28,7 @@ Quy tắc frontmatter:
 - `description`: dưới khoảng 1000 ký tự, KHÔNG chứa dấu `<` `>`. Các dấu `< >` trong khung trên chỉ là chỗ điền.
 - `description` phải viết để skill tự kích hoạt khi người dùng nói câu đời thường liên quan đến đồ án: viết báo cáo, sửa định dạng, làm slide, chuẩn bị bảo vệ, phân công nhóm, tìm hoặc ghi nguồn, kiểm tra lần cuối. Nêu tên đề tài và tên trường để không nhầm với đồ án khác.
 
-Với Cursor (`.mdc`), frontmatter dùng `description`, `globs`, `alwaysApply: true` thay cho `name`; vẫn giữ nguyên 5 section.
+Codex dùng đúng frontmatter `name` + `description` như trên. Với Cursor (`.mdc`), frontmatter dùng `description`, `globs`, `alwaysApply: true` thay cho `name`; vẫn giữ nguyên 5 section.
 
 ---
 

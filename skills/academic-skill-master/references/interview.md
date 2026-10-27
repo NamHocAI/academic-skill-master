@@ -33,7 +33,7 @@ Hỏi cả 10 câu TRONG MỘT TIN NHẮN, nhóm theo chủ đề, mỗi câu c�
 
 ### Nhóm D – Cách dùng, tiến độ và quy định AI
 
-7. Bạn đang dùng Claude ở đâu? (a) Trang web hoặc app Claude, (b) công cụ lập trình như Claude Code hoặc Cursor, (c) Không chắc. Chọn (c) mình sẽ chọn cách đơn giản nhất cho bạn.
+7. Bạn đang dùng trợ lý AI ở đâu? (a) Trang web hoặc app Claude, (b) Claude Code, (c) Codex của OpenAI, (d) Cursor, (e) Không chắc. Chọn (e) mình sẽ chọn cách đơn giản nhất cho bạn.
 8. **(QUAN TRỌNG)** Các mốc thời gian: ngày nộp đề cương, giữa kỳ, cuối kỳ, ngày bảo vệ hoặc demo, và bạn được thuyết trình bao nhiêu phút?
 9. Bạn bảo vệ thế nào? Có hội đồng không, có demo trực tiếp không, dùng máy của ai, và bạn quen với công cụ ở mức nào (mới bắt đầu / dùng được / thành thạo)?
 10. Trường hoặc thầy cô có quy định gì về dùng AI và kiểm tra đạo văn không?
@@ -49,7 +49,7 @@ Chỉ hỏi lại đúng phần thiếu. Không hỏi lại cả bộ.
 | Câu | Cách xử lý |
 |---|---|
 | 3, 4, 8 | Hỏi tên trường và khoa (nếu chưa có), đề xuất chuẩn phổ biến của ngành, ghi "giả định – CHƯA XÁC MINH", nhắc nên hỏi lại giảng viên |
-| 7 | Nếu không rõ, mặc định "Claude Web (trang web hoặc app Claude)" và hướng dẫn theo cách đơn giản nhất. Nếu tự nhận ra đang chạy trong Claude Code hoặc Cursor thì dùng môi trường đó |
+| 7 | Nếu không rõ, mặc định "Claude Web (trang web hoặc app Claude)" và hướng dẫn theo cách đơn giản nhất. Nếu tự nhận ra đang chạy trong Claude Code, Codex hoặc Cursor thì dùng môi trường đó |
 | Các câu khác | Đề xuất lựa chọn phổ biến nhất và hỏi người dùng có đồng ý không |
 
 Chuẩn phổ biến để đề xuất cho câu 3 (luôn gắn "giả định – CHƯA XÁC MINH"): nhiều trường ở Việt Nam dùng Times New Roman 13, giãn dòng 1.3–1.5, lề trái 3–3.5 cm, lề còn lại 2–2.5 cm, khổ A4, đề mục CHƯƠNG 1 / 1.1 / 1.1.1, chú thích bảng đặt trên, chú thích hình đặt dưới, đánh số theo chương. Trích dẫn: APA cho Kinh tế, Marketing, Giáo dục, Tâm lý; IEEE cho CNTT, Kỹ thuật; Vancouver cho Y – Dược. Đây chỉ là gợi ý ban đầu, không phải quy định.
@@ -57,7 +57,7 @@ Chuẩn phổ biến để đề xuất cho câu 3 (luôn gắn "giả định �
 ### Người dùng gửi file mẫu, quy định (.docx, .pdf) hoặc ảnh chụp
 Đọc và trích thông số thực tế: font, cỡ chữ, giãn dòng, lề, đánh số trang, phân cấp đề mục, caption hình và bảng, bố cục chương, mẫu bìa và phụ lục. Đối chiếu với câu 3. Nếu mâu thuẫn, nêu rõ chỗ lệch và hỏi người dùng chọn theo nguồn nào.
 
-Trên Claude Code: file .docx có thể đọc bằng cách giải nén `word/document.xml` và `word/styles.xml` (định dạng thực tế nằm ở đây); file .pdf đọc bằng công cụ đọc file. Tự làm, không bắt người dùng chạy lệnh.
+Trên Claude Code hoặc Codex: file .docx có thể đọc bằng cách giải nén `word/document.xml` và `word/styles.xml` (định dạng thực tế nằm ở đây); file .pdf đọc bằng công cụ đọc file. Tự làm, không bắt người dùng chạy lệnh.
 
 ### Người dùng dán nội dung quy định
 Trích tương tự, ghi nguồn "từ template".

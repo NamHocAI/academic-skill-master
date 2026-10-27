@@ -3,12 +3,13 @@
 > Bộ trợ lý AI riêng cho đồ án, khóa luận, tiểu luận của sinh viên Việt Nam, thuộc **mọi ngành**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-orange)
 ![Claude.ai](https://img.shields.io/badge/Claude.ai-skill-purple)
+![Codex](https://img.shields.io/badge/Codex-skill-10a37f)
 ![Cursor](https://img.shields.io/badge/Cursor-rules-black)
 
-**Academic Skill Master** là một *skill* (bộ kỹ năng) cho Claude. Nó phỏng vấn bạn 10 câu về đồ án, rồi tạo ra **một file trợ lý riêng** (`SKILL_MASTER.md`) bám sát **template trình bày** và **tiêu chí chấm điểm thật** của giảng viên bạn.
+**Academic Skill Master** là một *skill* (bộ kỹ năng) cho trợ lý AI, dùng được trên **Claude** (web, app, Claude Code), **Codex** của OpenAI và **Cursor**. Skill viết theo chuẩn mở Agent Skills (một thư mục có file `SKILL.md`), nên cùng một bộ file chạy được ở nhiều nơi. Nó phỏng vấn bạn 10 câu về đồ án, rồi tạo ra **một file trợ lý riêng** (`SKILL_MASTER.md`) bám sát **template trình bày** và **tiêu chí chấm điểm thật** của giảng viên bạn.
 
 Sau đó, bạn chỉ cần nhắn bằng lời thường như *"giúp mình viết dàn ý chương 2"*, *"kiểm tra định dạng"*, *"bảo vệ thử với mình"*. Không cần nhớ lệnh, không cần biết kỹ thuật.
 
@@ -22,7 +23,8 @@ Sau đó, bạn chỉ cần nhắn bằng lời thường như *"giúp mình vi�
 - [Cài đặt](#cài-đặt)
   - [Claude Code (app Claude trên máy tính hoặc terminal)](#a-claude-code)
   - [Claude.ai (trang web hoặc app điện thoại)](#b-claudeai-trang-web-hoặc-app)
-  - [Cursor](#c-cursor)
+  - [Codex của OpenAI](#c-codex-của-openai)
+  - [Cursor](#d-cursor)
 - [Cách dùng](#cách-dùng)
 - [Bộ trợ lý được tạo ra gồm những gì?](#bộ-trợ-lý-được-tạo-ra-gồm-những-gì)
 - [Những câu bạn có thể nhắn](#những-câu-bạn-có-thể-nhắn)
@@ -103,7 +105,7 @@ Khởi động lại phiên là dùng được.
 bash install.sh
 ```
 
-Script sẽ chép skill vào `~/.claude/skills/academic-skill-master/` (dùng được cho mọi dự án).
+Script sẽ chép skill vào `~/.claude/skills/academic-skill-master/` (cho Claude Code) và `~/.agents/skills/academic-skill-master/` (cho Codex), dùng được cho mọi dự án.
 
 **Cách 3 – Chép tay.** Chép cả thư mục `skills/academic-skill-master/` vào:
 
@@ -132,7 +134,29 @@ Thư mục đích phải chứa trực tiếp file `SKILL.md`.
 
 > Sau khi trợ lý riêng được tạo xong, Claude sẽ hướng dẫn bạn tạo **một Project mới cho đồ án** và tải file `SKILL_MASTER.md` vào đó.
 
-### C. Cursor
+### C. Codex của OpenAI
+
+Áp dụng cho Codex CLI (dòng lệnh), app Codex và tiện ích Codex trong VS Code.
+
+**Cách 1 – Chạy script cài đặt.** Giống [cách 2 của Claude Code](#a-claude-code): tải repo về, giải nén, chạy `install.ps1` (Windows) hoặc `install.sh` (macOS / Linux). Script cài cho cả Claude Code và Codex cùng lúc.
+
+**Cách 2 – Chép tay.** Chép cả thư mục `skills/academic-skill-master/` vào:
+
+| Phạm vi | Đặt vào |
+|---|---|
+| Mọi dự án trên máy | `~/.agents/skills/academic-skill-master/` (Windows: `C:\Users\<tên>\.agents\skills\academic-skill-master\`) |
+| Chỉ một thư mục đồ án | `<thư mục đồ án>/.agents/skills/academic-skill-master/` |
+
+Mở lại Codex nếu chưa thấy skill. Sau đó:
+
+- Nhắn bình thường, ví dụ *"tạo trợ lý cho đồ án của mình"*, và Codex tự chọn skill; hoặc
+- Gõ `$academic-skill-master` để gọi thẳng, hay gõ `/skills` để chọn từ danh sách.
+
+> Bản Codex cũ dùng thư mục `~/.codex/skills/`. Nếu Codex của bạn không nhận skill ở `~/.agents/skills/`, hãy cập nhật Codex hoặc chép thêm vào `~/.codex/skills/`.
+
+Trợ lý riêng cho đồ án sẽ được tạo tại `.agents/skills/do-an-<tên-ngắn>/SKILL.md` trong thư mục đồ án.
+
+### D. Cursor
 
 1. Tải repo về và giải nén.
 2. Trong thư mục đồ án của bạn, tạo thư mục `.cursor/rules/` (nếu chưa có).
@@ -165,7 +189,7 @@ Nhóm A – Thông tin chung
 - Gửi **phiếu chấm / rubric** (câu 4) – trợ lý sẽ chia công sức theo đúng trọng số điểm.
 - Ghi đủ **các mốc thời gian** (câu 8) – kế hoạch sẽ có mốc đệm trước mỗi hạn.
 
-Kết quả: trên Claude Code, file được tạo sẵn tại `.claude/skills/do-an-<tên-ngắn>/SKILL.md` trong thư mục đồ án. Trên Claude.ai, bạn nhận file `SKILL_MASTER.md` để tải vào Project.
+Kết quả: trên Claude Code, file được tạo sẵn tại `.claude/skills/do-an-<tên-ngắn>/SKILL.md` trong thư mục đồ án; trên Codex là `.agents/skills/do-an-<tên-ngắn>/SKILL.md`. Trên Claude.ai, bạn nhận file `SKILL_MASTER.md` để tải vào Project.
 
 ---
 
@@ -237,8 +261,8 @@ academic-skill-master/
 │   └── academic-skill-master.zip    # Gói sẵn để tải lên Claude.ai
 ├── tools/
 │   └── build_zip.py             # Tạo lại file zip trong dist/
-├── install.ps1                  # Cài nhanh trên Windows
-├── install.sh                   # Cài nhanh trên macOS / Linux
+├── install.ps1                  # Cài nhanh cho Claude Code + Codex trên Windows
+├── install.sh                   # Cài nhanh cho Claude Code + Codex trên macOS / Linux
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -252,7 +276,7 @@ Claude tự chạy bước này sau khi tạo file. Nếu muốn tự kiểm (c�
 python skills/academic-skill-master/scripts/validate_skill.py duong/dan/SKILL_MASTER.md --env web
 ```
 
-Script kiểm tra: frontmatter hợp lệ, tên skill đúng quy tắc, mô tả không quá dài, đủ 5 section đúng thứ tự, dòng "LƯU Ý" ở đầu Section 1, mọi thông số ở Section 2 có ghi nguồn, không còn chỗ điền bị bỏ sót, độ dài phù hợp môi trường (`web`, `code`, `cursor`).
+Script kiểm tra: frontmatter hợp lệ, tên skill đúng quy tắc, mô tả không quá dài, đủ 5 section đúng thứ tự, dòng "LƯU Ý" ở đầu Section 1, mọi thông số ở Section 2 có ghi nguồn, không còn chỗ điền bị bỏ sót, độ dài phù hợp môi trường (`web`, `code`, `codex`, `cursor`).
 
 ---
 
@@ -291,6 +315,12 @@ Bộ trợ lý được thiết kế để **hỗ trợ**, không làm thay. **B
 </details>
 
 <details>
+<summary><b>Dùng Codex hay ChatGPT thay cho Claude được không?</b></summary>
+
+Codex: được, xem [cách C](#c-codex-của-openai). Skill viết theo chuẩn mở Agent Skills nên chép thư mục là dùng. Các công cụ khác cũng hỗ trợ chuẩn này thì thường cũng chạy được, nhưng repo mới kiểm tra hướng dẫn cho Claude, Codex và Cursor.
+</details>
+
+<details>
 <summary><b>Mình chưa có file mẫu hay rubric của trường thì sao?</b></summary>
 
 Cứ trả lời "chưa biết". Claude sẽ đề xuất chuẩn phổ biến của ngành và gắn nhãn "giả định – chưa xác minh". Khi có file thật, bạn gửi vào và nói "đây là file mẫu", trợ lý sẽ tự cập nhật.
@@ -311,7 +341,7 @@ Một người tạo trợ lý rồi chia sẻ file `SKILL_MASTER.md` (hoặc ch
 <details>
 <summary><b>Trợ lý có nhớ tiến độ giữa các lần chat không?</b></summary>
 
-Trên Claude Code: có, lưu vào `PROJECT_STATUS.md`. Trên Claude.ai: cuối mỗi buổi, trợ lý đưa một đoạn "tóm tắt trạng thái" ngắn để bạn dán lại ở lần sau.
+Trên Claude Code và Codex: có, lưu vào `PROJECT_STATUS.md`. Trên Claude.ai: cuối mỗi buổi, trợ lý đưa một đoạn "tóm tắt trạng thái" ngắn để bạn dán lại ở lần sau.
 </details>
 
 <details>
