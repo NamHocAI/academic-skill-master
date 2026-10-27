@@ -1,5 +1,14 @@
 # Nhật ký thay đổi
 
+## [1.1.1] – 2026-10-28
+
+### Sửa lỗi
+- Hướng dẫn cài cho Cursor: `references/`, `assets/`, `scripts/` đặt cạnh file `.mdc` trong `.cursor/rules/`, khớp với đường dẫn skill đọc.
+- `validate_skill.py`: đọc được `description` viết nhiều dòng, đếm số dòng chính xác, chấp nhận dòng "LƯU Ý" có in đậm.
+
+### Thay đổi
+- Claude Code và Codex: file trợ lý giữ 300–500 dòng; phần chi tiết của Section 2 tách sang `references/trinh-bay.md`. Script kiểm tra cả file này.
+
 ## [1.1.0] – 2026-10-27
 
 ### Thêm mới

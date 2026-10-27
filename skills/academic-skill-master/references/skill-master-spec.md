@@ -2,7 +2,8 @@
 
 File chính duy nhất, có YAML frontmatter (`name`, `description`), gồm ĐÚNG 5 section. Dùng bảng và checklist, ưu tiên cô đọng.
 
-- Độ dài: 500–800 dòng cho Claude Web, Claude Code và Codex; 300–400 dòng cho Cursor.
+- Độ dài: 500–800 dòng cho Claude Web; 300–500 dòng cho Claude Code và Codex; 300–400 dòng cho Cursor.
+- Claude Code và Codex: file chính chỉ nạp khi cần, nên giữ dưới 500 dòng. Section 2 trong file chính chỉ giữ bảng tóm tắt (Typography, Page Setup, Hierarchy, mỗi dòng có cột Nguồn) và một dòng trỏ tới `references/trinh-bay.md`; mục 3–10 của Section 2 viết đầy đủ trong file đó, bảng cũng phải có cột Nguồn. Claude Web và Cursor vẫn để toàn bộ trong một file.
 - File phụ (ngoại lệ được phép): `REFERENCES.md`, `PROJECT_STATUS.md`, `FEEDBACK_LOG.md`. Mẫu ở `assets/`. Chỉ tạo khi môi trường cho ghi file; nếu không, đưa nội dung vào chat.
 - Mọi lần tạo file đều theo khung dưới đây để kết quả nhất quán.
 
@@ -216,7 +217,7 @@ Chạy `scripts/validate_skill.py` nếu được. Nếu không, tự kiểm:
 - [ ] `description` dưới khoảng 1000 ký tự, không có dấu `<` `>`.
 - [ ] Đủ 5 section, đúng tên và thứ tự.
 - [ ] Dòng "LƯU Ý" nằm ngay đầu Section 1.
-- [ ] Mọi thông số ở Section 2 đều có ghi nguồn.
+- [ ] Mọi thông số ở Section 2 (và `references/trinh-bay.md` nếu có) đều có ghi nguồn.
 - [ ] Mọi giả định có nhãn "giả định – CHƯA XÁC MINH".
 - [ ] Độ dài nằm trong khoảng cho môi trường.
 - [ ] Router mỗi hành động có ít nhất 3 cách nói.

@@ -1,6 +1,6 @@
 {
   "name": "academic-skill-master",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Dựng bộ trợ lý (skill) riêng cho đồ án, khóa luận của sinh viên mọi ngành: phỏng vấn 10 câu, rồi tạo SKILL_MASTER.md bám sát template và rubric của giảng viên.",
   "author": {
     "name": "namhocai",

@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Bộ trợ lý học thuật cho sinh viên Việt Nam: đồ án, khóa luận, tiểu luận. Dùng được trên Claude và Codex.",
-    "version": "1.1.0"
+    "version": "1.1.1"
   },
   "plugins": [
     {
       "name": "academic-skill-master",
       "source": "./",
       "description": "Phỏng vấn 10 câu rồi tạo SKILL_MASTER.md cá nhân hóa cho đồ án: mốc thời gian, khung báo cáo, định dạng theo template trường, trích dẫn, phân công nhóm, slide, bảo vệ, nộp bài.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "category": "education"
     }
   ]

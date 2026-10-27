@@ -3,7 +3,7 @@
 > Bộ trợ lý AI riêng cho đồ án, khóa luận, tiểu luận của sinh viên Việt Nam, thuộc **mọi ngành**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.1-blue)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-orange)
 ![Claude.ai](https://img.shields.io/badge/Claude.ai-skill-purple)
 ![Codex](https://img.shields.io/badge/Codex-skill-10a37f)
@@ -161,7 +161,7 @@ Trợ lý riêng cho đồ án sẽ được tạo tại `.agents/skills/do-an-<
 1. Tải repo về và giải nén.
 2. Trong thư mục đồ án của bạn, tạo thư mục `.cursor/rules/` (nếu chưa có).
 3. Chép file `skills/academic-skill-master/SKILL.md` vào đó và đổi tên thành `academic-skill-master.mdc`.
-4. Chép thêm thư mục `references/` và `assets/` vào `.cursor/rules/academic-skill-master/` để Cursor đọc được khi cần.
+4. Chép thêm các thư mục `references/`, `assets/` và `scripts/` vào **cùng thư mục** `.cursor/rules/` (cạnh file `.mdc`) để Cursor đọc được khi cần.
 
 ---
 
@@ -276,7 +276,7 @@ Claude tự chạy bước này sau khi tạo file. Nếu muốn tự kiểm (c�
 python skills/academic-skill-master/scripts/validate_skill.py duong/dan/SKILL_MASTER.md --env web
 ```
 
-Script kiểm tra: frontmatter hợp lệ, tên skill đúng quy tắc, mô tả không quá dài, đủ 5 section đúng thứ tự, dòng "LƯU Ý" ở đầu Section 1, mọi thông số ở Section 2 có ghi nguồn, không còn chỗ điền bị bỏ sót, độ dài phù hợp môi trường (`web`, `code`, `codex`, `cursor`).
+Script kiểm tra: frontmatter hợp lệ, tên skill đúng quy tắc, mô tả không quá dài, đủ 5 section đúng thứ tự, dòng "LƯU Ý" ở đầu Section 1, mọi thông số ở Section 2 (và file `references/trinh-bay.md` đi kèm nếu có) có ghi nguồn, không còn chỗ điền bị bỏ sót, độ dài phù hợp môi trường (`web` 500–800 dòng, `code` và `codex` 300–500 dòng, `cursor` 300–400 dòng).
 
 ---
 

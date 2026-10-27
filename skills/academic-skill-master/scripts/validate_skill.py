@@ -7,6 +7,7 @@ Cách dùng:
 Thoát với mã 0 nếu không có LỖI (cảnh báo vẫn được in ra), mã 1 nếu có lỗi.
 """
 import argparse
+import os
 import re
 import sys
 
@@ -18,20 +19,40 @@ SECTIONS = [
     "Section 5: NATURAL-LANGUAGE INTENT ROUTER",
 ]
 NOTICE = "LƯU Ý: Hãy kiểm tra quy định của trường/khoa về việc sử dụng AI trong đồ án và khai báo đúng yêu cầu."
-LENGTH = {"web": (500, 800), "code": (500, 800), "codex": (500, 800), "cursor": (300, 400)}
+LENGTH = {"web": (500, 800), "code": (300, 500), "codex": (300, 500), "cursor": (300, 400)}
 SOURCE_TAGS = ("từ template", "từ bạn khai", "giả định", "chưa có")
+HEADER_CELLS = ("thông số", "cấp", "mục", "hạng mục")
+BLOCK_SCALARS = (">", "|", ">-", "|-", ">+", "|+")
 
 
 def parse_frontmatter(text):
     m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n", text, re.S)
     if not m:
         return None, text
-    fields = {}
+    fields, key = {}, None
     for line in m.group(1).splitlines():
-        if ":" in line and not line.startswith((" ", "\t")):
+        if line.startswith((" ", "\t")):
+            if key:  # dòng tiếp theo của giá trị viết nhiều dòng
+                fields[key] = (fields[key] + " " + line.strip()).strip()
+            continue
+        if ":" in line:
             key, _, value = line.partition(":")
-            fields[key.strip()] = value.strip().strip('"').strip("'")
+            key, value = key.strip(), value.strip()
+            fields[key] = "" if value in BLOCK_SCALARS else value.strip('"').strip("'")
     return fields, text[m.end():]
+
+
+def rows_without_source(text):
+    """Các dòng bảng (trừ dòng tiêu đề và dòng kẻ) không ghi nguồn."""
+    missing = []
+    for ln in text.splitlines():
+        if ln.startswith("|") and not re.match(r"^\|[\s:|-]+\|?$", ln):
+            cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+            if cells and cells[0].lower() in HEADER_CELLS:
+                continue
+            if not any(tag in ln.lower() for tag in SOURCE_TAGS):
+                missing.append(ln.strip()[:70])
+    return missing
 
 
 def main():
@@ -88,27 +109,32 @@ def main():
     s1 = re.search(r"^##\s+" + re.escape(SECTIONS[0]) + r"\s*$(.*?)(?=^##\s|\Z)", body, re.M | re.S)
     if s1:
         first = next((ln.strip().lstrip(">").strip() for ln in s1.group(1).splitlines() if ln.strip()), "")
-        if NOTICE not in first:
+        # Bỏ in đậm / in nghiêng nếu có
+        if NOTICE not in re.sub(r"[*_]", "", first):
             errors.append("Dòng đầu Section 1 không phải dòng 'LƯU Ý: ...' cố định.")
 
     s2 = re.search(r"^##\s+" + re.escape(SECTIONS[1]) + r"\s*$(.*?)(?=^##\s|\Z)", body, re.M | re.S)
     if s2:
-        missing = []
-        for ln in s2.group(1).splitlines():
-            if ln.startswith("|") and not re.match(r"^\|[\s:|-]+\|?$", ln):
-                cells = [c.strip() for c in ln.strip().strip("|").split("|")]
-                if cells and cells[0].lower() in ("thông số", "cấp", "mục", "hạng mục"):
-                    continue  # dòng tiêu đề bảng
-                if not any(tag in ln.lower() for tag in SOURCE_TAGS):
-                    missing.append(ln.strip()[:70])
+        missing = rows_without_source(s2.group(1))
         if missing:
             errors.append(f"Section 2 có {len(missing)} dòng bảng chưa ghi nguồn, VD: {missing[0]}")
+        # Claude Code / Codex: phần chi tiết của Section 2 có thể nằm ở file references/ đi kèm
+        base = os.path.dirname(os.path.abspath(args.file))
+        for ref in sorted(set(re.findall(r"references/[\w.-]+\.md", s2.group(1)))):
+            path = os.path.join(base, ref)
+            if not os.path.isfile(path):
+                errors.append(f"Section 2 nhắc tới '{ref}' nhưng không tìm thấy file này cạnh skill.")
+                continue
+            with open(path, encoding="utf-8") as f:
+                missing = rows_without_source(f.read())
+            if missing:
+                errors.append(f"'{ref}' có {len(missing)} dòng bảng chưa ghi nguồn, VD: {missing[0]}")
 
     placeholders = re.findall(r"<(?:ten|tên|Tên)[^>]*>", text)
     if placeholders:
         errors.append(f"Còn chỗ điền chưa thay: {', '.join(sorted(set(placeholders))[:5])}")
 
-    n = text.count("\n") + 1
+    n = len(text.splitlines())
     lo, hi = LENGTH[args.env]
     if not lo <= n <= hi:
         warnings.append(f"Độ dài {n} dòng, khuyến nghị {lo}–{hi} dòng cho môi trường '{args.env}'.")
