@@ -1,0 +1,20 @@
+{
+  "name": "academic-skill-master",
+  "owner": {
+    "name": "namhocai",
+    "url": "https://github.com/namhocai"
+  },
+  "metadata": {
+    "description": "Bộ trợ lý học thuật cho sinh viên Việt Nam: đồ án, khóa luận, tiểu luận.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "academic-skill-master",
+      "source": "./",
+      "description": "Phỏng vấn 10 câu rồi tạo SKILL_MASTER.md cá nhân hóa cho đồ án: mốc thời gian, khung báo cáo, định dạng theo template trường, trích dẫn, phân công nhóm, slide, bảo vệ, nộp bài.",
+      "version": "1.0.0",
+      "category": "education"
+    }
+  ]
+}
